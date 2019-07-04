@@ -59,15 +59,16 @@ class TodoController {
     const id = req.params.id;
     const name = req.body.name;
     const completed = req.body.completed;
-    const todoToUpdate = todos.find(todo => todo.id === id);
+    const todoToUpdate = todos.find(todo => todo.id == id);
     if (!name) {
       return res.status(400).json({
         message: "Todo name is required"
       });
-    }
+    }   
+
     else if (todoToUpdate) {
       const newTodos = todos.map(each => {
-        if (each.id === id) {
+        if (each.id == id) {
           return {
             id: each.id,
             name: name,
