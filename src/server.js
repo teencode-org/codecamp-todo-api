@@ -21,7 +21,7 @@ app.use(bodyParser.json({ extended: true }));
 // handles all the routing
 app.use(appRouter);
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4001;
 
 // start the express server
 app.listen(PORT, () => {
