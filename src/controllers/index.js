@@ -54,17 +54,12 @@ class TodoController {
     });
   }
 
-
-
-  // Issue 
-  // Issue 
-
   // PUT /todos/:id
   static updateTodo(req, res) {
     const id = req.params.id;
     const name = req.body.name;
     const completed = req.body.completed;
-    const todoToUpdate = todos.find(todo => todo.id == id);
+    const todoToUpdate = todos.find(todo => todo.id === id);
     if (!name) {
       return res.status(400).json({
         message: "Todo name is required"
@@ -72,7 +67,7 @@ class TodoController {
     }
     else if (todoToUpdate) {
       const newTodos = todos.map(each => {
-        if (each.id == id) {
+        if (each.id === id) {
           return {
             id: each.id,
             name: name,
@@ -95,7 +90,6 @@ class TodoController {
       message: `Cannot update todo with id ${id} because it doesn't exist on our server.`
     });
   }
-  // Issue
 
   // DELETE /todos/:id
   static deleteTodo(req, res) {
