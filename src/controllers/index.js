@@ -67,7 +67,7 @@ class TodoController {
             id: todo.id,
             name: name || todo.name,
             created_at: todo.created_at,
-            // fix this to save completed status if user pass in "false"
+            // fixed
             completed: completed || todo.completed
           };
         }
