@@ -1,8 +1,7 @@
 // declare controllers
 const uuidv1 = require('uuid/v1');
-//bug
-/*const todos = require('../dummyData/dummy')*/
-let todos = require('../dummyData/dummy')
+
+const todos = require('../dummyData/dummy')
 
 class TodoController {
   // GET /todos - get all of the todos we have in the system
@@ -74,7 +73,11 @@ class TodoController {
         return todo;
       });
 
-      todos = newTodos;
+       // bug
+      /* todos = newTodos;*/
+
+      let iniTialTodo = todos
+      iniTialTodo = newTodos;
 
       return res.json({
         message: "Todo updated successfully"
@@ -93,7 +96,11 @@ class TodoController {
 
       const newTodos = todos.filter(todo => todo.id !== id);
 
-      todos = newTodos;
+      // bug
+      /* todos = newTodos;*/
+
+      let iniTialTodo = todos
+      iniTialTodo = newTodos
 
       return res.json({
         message: "Todo deleted successfully"
