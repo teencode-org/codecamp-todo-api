@@ -1,6 +1,8 @@
 // declare controllers
 const uuidv1 = require('uuid/v1');
-const todos = require('../dummyData/dummy')
+//bug
+/*const todos = require('../dummyData/dummy')*/
+let todos = require('../dummyData/dummy')
 
 class TodoController {
   // GET /todos - get all of the todos we have in the system
@@ -13,7 +15,9 @@ class TodoController {
 
   // GET /todos/:id
   static getTodoById(req, res) {
-    const id = parseInt(req.params.id, 10);
+    // bug
+  /* const id = parseInt(req.params.id, 10);*/
+    const id = req.params.id;
     const todo = todos.find(each => each.id === id);
     if (!todo) {
       return res.status(404).json({
@@ -55,7 +59,7 @@ class TodoController {
     const id = req.params.id;
     const name = req.body.name;
     const completed = req.body.completed;
-    const todoToUpdate = todos.find(todo => todo.id === id);
+    const todoToUpdate = todos.find(todo => todo.id == id);
     if (todoToUpdate) {
       const newTodos = todos.map(todo => {
         if (todo.id === id) {
@@ -83,7 +87,8 @@ class TodoController {
 
   // DELETE /todos/:id
   static deleteTodo(req, res) {
-    app.delete("/todos/:id", (req, res) => {
+    // bug
+    /*app.delete("/todos/:id", (req, res) => {}*/
       const id = req.params.id;
 
       const newTodos = todos.filter(todo => todo.id !== id);
@@ -93,7 +98,6 @@ class TodoController {
       return res.json({
         message: "Todo deleted successfully"
       });
-    });
   }
 }
 
